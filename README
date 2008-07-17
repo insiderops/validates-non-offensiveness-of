@@ -1,0 +1,23 @@
+ValidatesNonOffensivenessOf
+===========================
+
+An ActiveRecord style validation method intended to prevent profanity and other
+"offensive" content.
+
+A list of offensive or disallowed words can be edited in lib/offensive_words.yml
+
+Usage:
+
+class Review < ActiveRecord::Base
+  validates_non_offensiveness_of :body
+end
+
+@review = Review.new(:body => "Turd burglar")
+@review.valid? #=> false
+@review.errors #=> {:body => "can not contain the word 'Turd'"}
+
+==========================
+Written by: Bernd Ustorf
+
+Contributons By:
+Brandon Keene <bkeene@gmail.com>
